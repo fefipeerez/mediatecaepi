@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <title>Mediateca Interactiva</title>
+    <link href="./Mediateca Interactiva_files/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./Mediateca Interactiva_files/all.min.css">
+    <link href="./Mediateca Interactiva_files/css2" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --dark-color: #1b263b;
+            --light-color: #f8f9fa;
+            --success-color: #4cc9f0;
+            --text-color: #2b2d42;
+            --text-light: #8d99ae;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Barra de navegación mejorada */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color);
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 8px 20px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(63, 55, 201, 0.3);
+        }
+        
+        /* Hero section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            margin-bottom: 50px;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+        
+        /* Tarjetas de recursos */
+        .resource-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 25px;
+            height: 100%;
+            background-color: white;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .resource-card .card-img-top {
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .resource-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .resource-card .card-body {
+            padding: 25px;
+        }
+        
+        .resource-card .card-title {
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card .card-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .resource-card .card-footer {
+            background-color: white;
+            border-top: none;
+            padding: 0 25px 25px;
+        }
+        
+        .badge-category {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        /* Sección de subida */
+        .upload-section {
+            background-color: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            color: var(--dark-color);
+            font-weight: 700;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 2px;
+        }
+        
+        .upload-area {
+            border: 2px dashed #e0e0e0;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background-color: #fafafa;
+            margin-bottom: 20px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.03);
+            transform: translateY(-3px);
+        }
+        
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover .upload-icon {
+            transform: scale(1.1);
+            color: var(--accent-color);
+        }
+        
+        /* Footer mejorado */
+        .footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 80px 0 30px;
+            margin-top: 100px;
+            clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+        }
+        
+        .footer-title {
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            display: block;
+            margin-bottom: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .upload-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="http://127.0.0.1:5500/index.html#"><span>Medi</span>ateca</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://127.0.0.1:5500/index.html#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/index.html#documentos">Documentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/index.html#actividades">Actividades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/index.html#galeria">Galería</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="btn btn-primary" href="http://127.0.0.1:5500/index.html#" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-sign-in-alt me-2"></i>Ingresar
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 fade-in">
+                    <h1 class="hero-title">Explora, Aprende y Comparte</h1>
+                    <p class="hero-subtitle">Accede a nuestra colección interactiva de recursos educativos, documentos especializados y actividades culturales diseñadas para enriquecer tu experiencia de aprendizaje.</p>
+                    <a href="http://127.0.0.1:5500/index.html#subir" class="btn btn-light btn-lg me-2">
+                        <i class="fas fa-cloud-upload-alt me-2"></i>Subir recurso
+                    </a>
+                    <a href="http://127.0.0.1:5500/index.html#documentos" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-search me-2"></i>Explorar
+                    </a>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block fade-in delay-1">
+                    <img src="./Mediateca Interactiva_files/photo-1589998059171-988d887df646" alt="Biblioteca digital" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <!-- Sección de subida de archivos -->
+        <div class="upload-section fade-in delay-2" id="subir">
+            <h2 class="section-title">Nuestra mediateca</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="upload-area">
+                        <i class="fas fa-file-pdf upload-icon"></i>
+                        <h5>Material académico primer parcial - Epistemología</h5>
+                        <p class="text-muted">Contiene material académico para el primer parcial de Epistemología, incluyendo apuntes teóricos (sobre autores como Bunge, Tenenti), posibles guías de estudio y presentaciones. Está organizada para facilitar el repaso de los temas clave de la unidad, como los fundamentos del conocimiento científico, metodologías y críticas epistemológicas, con recursos en formato PDF y otros archivos complementarios. Ideal para estudiantes que necesiten consolidar estos contenidos.</p>
+                        <a href="https://drive.google.com/drive/folders/1hLggX881Jjyxg24aP8AmRsceAUvDEHMr?usp=drive_link" target="_blank" class="btn btn-outline-primary mb-3">Ver carpeta de Drive</a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <img src="./Mediateca Interactiva_files/giphy.gif" alt="Decorativo libros" style="max-width: 180px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="upload-area">
+                        <i class="fas fa-link upload-icon"></i>
+                        <h5>Actividad: Cuestionario de opción múltiple</h5>
+                        <p class="text-muted">Cuestionario de opción múltiple sobre epistemología, ciencia e historia. Diseñado para repasar conceptos clave a partir de las ideas de Mario Bunge y de los historiadores Romano y Tenenti.</p>
+                        <a href="https://drive.google.com/drive/folders/1BAL9b0XQJRryxcUk3tGG_Xke7Is9xjst?usp=drive_link" target="_blank" class="btn btn-outline-success mb-3">Ver cuestionario PDF</a>
+                    </div>
+                    <div class="text-center mt-3">
+                        <img src="./Mediateca Interactiva_files/giphy(1).gif" alt="Decorativo gatito" style="max-width: 180px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de documentos eliminada -->
+
+        <!-- Sección de actividades eliminada -->
+
+        <!-- Sección de galería eliminada -->
+
+        <!-- Sección Drive explicación PDF eliminada -->
+    <!-- Imagen decorativa de fondo -->
+    <div style="position:fixed;bottom:20px;right:20px;z-index:0;opacity:0.15;pointer-events:none;">
+        <img src="./Mediateca Interactiva_files/giphy(2).gif" alt="Decoración fondo" style="max-width:200px;">
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h5 class="footer-title">Mediateca Interactiva</h5>
+                    <p class="mb-4">Plataforma educativa y cultural que promueve el acceso abierto al conocimiento y el intercambio de recursos académicos.</p>
+                    <div class="social-icons">
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fab fa-twitter"></i></a>
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fab fa-instagram"></i></a>
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="footer-title">Enlaces</h5>
+                    <div class="footer-links">
+                        <a href="http://127.0.0.1:5500/index.html#">Inicio</a>
+                        <a href="http://127.0.0.1:5500/index.html#documentos">Documentos</a>
+                        <a href="http://127.0.0.1:5500/index.html#actividades">Actividades</a>
+                        <a href="http://127.0.0.1:5500/index.html#galeria">Galería</a>
+                        <a href="http://127.0.0.1:5500/index.html#subir">Contribuir</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="footer-title">Contacto</h5>
+                    <div class="footer-links">
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fas fa-map-marker-alt me-2"></i> Av. Cultura 123, Ciudad</a>
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fas fa-phone me-2"></i> +123 456 7890</a>
+                        <a href="http://127.0.0.1:5500/index.html#"><i class="fas fa-envelope me-2"></i> info@mediateca.org</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="footer-title">Boletín informativo</h5>
+                    <p class="mb-3">Suscríbete para recibir actualizaciones sobre nuevos recursos y actividades.</p>
+                    <form class="mb-3">
+                        <div class="input-group">
+                            <input type="email" class="form-control" placeholder="Tu correo">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">© 2023 Mediateca Interactiva. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="http://127.0.0.1:5500/index.html#" class="text-white-50 me-3">Política de privacidad</a>
+                    <a href="http://127.0.0.1:5500/index.html#" class="text-white-50">Términos de servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de actividad -->
+    <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="activityModalLabel">Agregar nueva actividad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="activityForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="activityTitle" class="form-label">Título de la actividad</label>
+                                <input type="text" class="form-control" id="activityTitle" required="">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="activityType" class="form-label">Tipo de actividad</label>
+                                <select class="form-select" id="activityType" required="">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="taller">Taller</option>
+                                    <option value="webinar">Webinar</option>
+                                    <option value="foro">Foro</option>
+                                    <option value="conferencia">Conferencia</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="activityDescription" class="form-label">Descripción</label>
+                            <textarea class="form-control" id="activityDescription" rows="3" required=""></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="activityLink" class="form-label">Enlace o URL</label>
+                                <input type="url" class="form-control" id="activityLink" required="">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="activityDate" class="form-label">Fecha y hora</label>
+                                <input type="datetime-local" class="form-control" id="activityDate" required="">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="activityImage" class="form-label">Imagen representativa (opcional)</label>
+                            <input class="form-control" type="file" id="activityImage" accept="image/*">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" form="activityForm" class="btn btn-primary">Publicar actividad</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-user-circle fa-5x text-primary mb-3"></i>
+                            <h4>Bienvenido de vuelta</h4>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Correo electrónico</label>
+                            <input type="email" class="form-control" id="loginEmail" required="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="loginPassword" required="">
+                        </div>
+                        <div class="mb-3 d-flex justify-content-between align-items-center">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                <label class="form-check-label" for="rememberMe">Recordarme</label>
+                            </div>
+                            <a href="http://127.0.0.1:5500/index.html#" class="text-decoration-none small">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100 py-2 mb-3">Ingresar</button>
+                        <div class="text-center">
+                            <p class="mb-0">¿No tienes una cuenta? <a href="http://127.0.0.1:5500/index.html#" class="text-decoration-none">Regístrate</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./Mediateca Interactiva_files/bootstrap.bundle.min.js.descarga"></script>
+    <script>
+        // Funcionalidad para subir archivos
+        const dropArea = document.getElementById('dropArea');
+        const fileInput = document.getElementById('fileInput');
+        
+        // Evitar comportamientos por defecto
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+        
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+        
+        // Resaltar el área de drop
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+        
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+        
+        function highlight() {
+            dropArea.style.borderColor = 'var(--primary-color)';
+            dropArea.style.backgroundColor = 'rgba(67, 97, 238, 0.05)';
+        }
+        
+        function unhighlight() {
+            dropArea.style.borderColor = '#e0e0e0';
+            dropArea.style.backgroundColor = '#fafafa';
+        }
+        
+        // Manejar archivos soltados
+        dropArea.addEventListener('drop', function(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        });
+        
+        // Manejar archivos seleccionados
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+        
+        function handleFiles(files) {
+            const uploadedFilesList = document.getElementById('uploadedFiles');
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                if (file.type === 'application/pdf') {
+                    // Mostrar archivo en la lista
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = `${file.name} (${(file.size/1024/1024).toFixed(2)} MB)`;
+                    uploadedFilesList.appendChild(li);
+                } else {
+                    alert('Solo se permiten archivos PDF.');
+                }
+            }
+        }
+        // Guardar y mostrar el enlace de Drive
+        document.addEventListener('DOMContentLoaded', function() {
+            const saveBtn = document.getElementById('saveDriveLink');
+            const input = document.getElementById('driveLinkInput');
+            const savedDiv = document.getElementById('savedDriveLink');
+            if (saveBtn && input && savedDiv) {
+                saveBtn.addEventListener('click', function() {
+                    let url = input.value.trim();
+                    if (url) {
+                        // Convertir link personal de Drive a link público si es necesario
+                        // Ejemplo de link personal: https://drive.google.com/file/d/ID/view?usp=sharing
+                        // Link público: https://drive.google.com/uc?id=ID&export=download
+                        const fileRegex = /https:\/\/drive\.google\.com\/file\/d\/([\w-]+)\/view.*/;
+                        const folderRegex = /https:\/\/drive\.google\.com\/drive\/folders\/([\w-]+)/;
+                        let publicUrl = url;
+                        if (fileRegex.test(url)) {
+                            const id = url.match(fileRegex)[1];
+                            publicUrl = `https://drive.google.com/uc?id=${id}&export=download`;
+                        } else if (folderRegex.test(url)) {
+                            const id = url.match(folderRegex)[1];
+                            publicUrl = `https://drive.google.com/drive/folders/${id}?usp=sharing`;
+                        }
+                        savedDiv.innerHTML = `<strong>Enlace público:</strong> <a href="${publicUrl}" target="_blank">${publicUrl}</a>`;
+                    } else {
+                        savedDiv.innerHTML = '';
+                    }
+                });
+            }
+        });
+        
+        // Mostrar modal de actividad
+        function showActivityModal() {
+            var activityModal = new bootstrap.Modal(document.getElementById('activityModal'));
+            activityModal.show();
+        }
+        
+        // Animaciones al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                elements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 100);
+        });
+    </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
